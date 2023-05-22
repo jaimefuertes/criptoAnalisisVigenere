@@ -175,17 +175,18 @@ def detectLanguage(ciphertext):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 3:
         print("Error on command arguments, not enough given")
     else:
-        file = open(sys.argv[0], "r", encoding="UTF-8")
+    
+        file = open(sys.argv[2], "r", encoding="UTF-8")
         inputText = file.read()
 
 
         langFreq, langAlph = detectLanguage(inputText)
-
+        
         kl = guessKeyLength(inputText, langFreq)
-        # print(kl)
+        
         key = guessKey(inputText, kl, langFreq, langAlph)
         print(key)
 
